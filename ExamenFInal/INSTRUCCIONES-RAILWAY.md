@@ -176,8 +176,8 @@ DB_PORT=5432
 1. **Verifica que estos archivos estén en la raíz del repositorio:**
    - `composer.json` - Define que es una aplicación PHP
    - `index.php` - Punto de entrada para Railway
-   - `nixpacks.toml` - Configuración específica de Nixpacks
    - `railway.json` - Configuración de Railway
+   - `Dockerfile` - Configuración Docker alternativa
 
 2. **Si el error persiste:**
    - Asegúrate de que todos los archivos estén subidos a Git
@@ -189,12 +189,17 @@ DB_PORT=5432
    /
    ├── composer.json
    ├── index.php
-   ├── nixpacks.toml
    ├── railway.json
+   ├── Dockerfile
    ├── index.html
    ├── config-railway.php
    └── [resto de archivos]
    ```
+
+4. **Solución alternativa con Docker:**
+   - Si Nixpacks sigue fallando, Railway usará automáticamente el Dockerfile
+   - El Dockerfile incluye PHP 8.2 con todas las extensiones necesarias
+   - Esta es una solución más confiable y estable
 
 #### Error de conexión a base de datos:
 1. Verifica que la base de datos PostgreSQL esté creada en Railway

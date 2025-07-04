@@ -11,8 +11,8 @@ echo "<h2>Conecta Cusco - Archivos Críticos</h2>";
 $archivos_criticos = [
     'composer.json' => 'Define que es una aplicación PHP',
     'index.php' => 'Punto de entrada para Railway',
-    '.nixpacks' => 'Configuración específica de Nixpacks',
     'railway.json' => 'Configuración de Railway',
+    'Dockerfile' => 'Configuración Docker alternativa',
     'Procfile' => 'Configuración alternativa',
     'index.html' => 'Página principal',
     'config-railway.php' => 'Configuración para Railway'

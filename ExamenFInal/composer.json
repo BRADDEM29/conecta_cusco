@@ -3,10 +3,7 @@
     "description": "Plataforma web para conectar profesionales de servicios con clientes en Cusco, Perú",
     "type": "project",
     "require": {
-        "php": ">=8.0",
-        "ext-pdo": "*",
-        "ext-pdo_pgsql": "*",
-        "ext-gd": "*"
+        "php": ">=8.1"
     },
     "autoload": {
         "psr-4": {
