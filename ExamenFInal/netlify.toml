@@ -1,0 +1,34 @@
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/paginas/php/*"
+  to = "/Paginas/html/:splat.html"
+  status = 200
+
+[[redirects]]
+  from = "/Paginas/php/*"
+  to = "/Paginas/html/:splat.html"
+  status = 200
+
+# Redirigir registro.php a registro.html
+[[redirects]]
+  from = "/registro.php"
+  to = "/Paginas/html/registro.html"
+  status = 200
+
+[[redirects]]
+  from = "/login.php"
+  to = "/Paginas/html/login.html"
+  status = 200
+
+[[redirects]]
+  from = "/buscar-servicios.php"
+  to = "/Paginas/html/buscar-servicios.html"
+  status = 200
+
+# Redirigir rutas de la raíz
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200 

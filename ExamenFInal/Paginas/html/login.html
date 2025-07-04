@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Iniciar Sesión - Conecta Cusco</title>
+	<meta name="description" content="Inicia sesión en tu cuenta de Conecta Cusco para encontrar o gestionar servicios.">
+	<link rel="stylesheet" href="/Estilos/login.css">
+	<link rel="stylesheet" href="/Estilos/mensajes.css">
+	<link rel="icon" href="/Imagenes/favicon.ico" type="image/x-icon">
+</head>
+<body>
+	<header>
+		<div class="container">
+			<div class="logo">
+				<img src="/Imagenes/logo.png" alt="Conecta Cusco Logo">
+			</div>
+			<h1>Conecta Cusco</h1>
+		</div>
+	</header>
+
+	<nav>
+		<div class="container">
+			<ul>
+				<li><a href="/index.html">Inicio</a></li>
+				<li><a href="/Paginas/php/buscar-servicios.php">Buscar Servicios</a></li>
+				<li><a href="/Paginas/php/publicar-servicios.php">Publicar mi Servicio</a></li>
+				<li><a href="/Paginas/html/login.html">Iniciar Sesión</a></li>
+				<li><a href="/Paginas/html/registro.html" class="btn-registro">Registrarse</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<main>
+		<section class="auth-form">
+			<div class="container">
+				<h2>Iniciar Sesión</h2>
+				
+				<!-- Contenedor para mensajes de estado -->
+				<div id="message-container" class="message-container">
+					<p id="message-text"></p>
+				</div>
+				
+				<form id="login-form" action="/Paginas/php/login.php" method="post" onsubmit="return validarFormulario()">
+					<div class="form-group">
+						<label for="correo_electronico">Correo Electrónico:</label>
+						<input type="email" id="correo_electronico" name="correo_electronico" required>
+					</div>
+					<div class="form-group">
+						<label for="contrasena">Contraseña:</label>
+						<input type="password" id="contrasena" name="contrasena" required>
+					</div>
+					<button type="submit" class="btn-primary" name="login">Entrar</button>
+				</form>
+				<p>¿No tienes cuenta? <a href="/Paginas/html/registro.html">Regístrate aquí</a>.</p>
+			</div>
+		</section>
+	</main>
+
+	<footer>
+		<div class="container">
+			<p>&copy; 2025 Conecta Cusco. Todos los derechos reservados.</p>
+		</div>
+	</footer>
+
+	<script>
+		// Función para mostrar mensajes
+		function mostrarMensaje(mensaje, tipo) {
+			const container = document.getElementById('message-container');
+			const texto = document.getElementById('message-text');
+			
+			container.className = `message-container ${tipo}`;
+			texto.textContent = mensaje;
+			container.style.display = 'block';
+			
+			// Ocultar mensaje después de 5 segundos
+			setTimeout(() => {
+				container.style.display = 'none';
+			}, 5000);
+		}
+
+		// Función para validar el formulario
+		function validarFormulario() {
+			const email = document.getElementById('correo_electronico').value.trim();
+			const contrasena = document.getElementById('contrasena').value;
+
+			// Validar email
+			const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+			if (!emailRegex.test(email)) {
+				mostrarMensaje('Por favor, ingresa un email válido.', 'error');
+				return false;
+			}
+
+			// Validar contraseña
+			if (contrasena.length < 1) {
+				mostrarMensaje('Por favor, ingresa tu contraseña.', 'error');
+				return false;
+			}
+
+			return true;
+		}
+
+		// Verificar si hay mensajes en la URL (después del procesamiento PHP)
+		window.onload = function() {
+			const urlParams = new URLSearchParams(window.location.search);
+			const mensaje = urlParams.get('mensaje');
+			const tipo = urlParams.get('tipo');
+			
+			if (mensaje) {
+				mostrarMensaje(decodeURIComponent(mensaje), tipo || 'error');
+			}
+		};
+	</script>
+</body>
+</html>

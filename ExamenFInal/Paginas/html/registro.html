@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Registrarse - Conecta Cusco</title>
+    <meta name="description" content="Crea una nueva cuenta en Conecta Cusco para ofrecer o encontrar servicios.">
+    <link rel="stylesheet" href="/Estilos/registro.css">
+    <link rel="stylesheet" href="/Estilos/mensajes.css">
+    <link rel="icon" href="/Imagenes/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="/Imagenes/logo.png" alt="Conecta Cusco Logo">
+            </div>
+            <h1>Conecta Cusco</h1>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="/index.html">Inicio</a></li>
+                <li><a href="/Paginas/php/buscar-servicios.php">Buscar Servicios</a></li>
+                <li><a href="/Paginas/php/publicar-servicios.php">Publicar mi Servicio</a></li>
+                <li><a href="/Paginas/html/login.html">Iniciar Sesión</a></li>
+                <li><a href="/Paginas/html/registro.html" class="btn-registro">Registrarse</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section class="auth-form">
+            <div class="container">
+                <h2>Crear una Nueva Cuenta</h2>
+
+                <!-- Contenedor para mensajes de estado -->
+                <div id="message-container" class="message-container">
+                    <p id="message-text"></p>
+                </div>
+
+                <form id="registro-form" action="/Paginas/php/registro.php" method="post" onsubmit="return validarFormulario()">
+                    <div class="form-group">
+                        <label for="nombre_completo">Nombre Completo:</label>
+                        <input type="text" id="nombre_completo" name="nombre_completo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="correo_electronico">Correo Electrónico:</label>
+                        <input type="email" id="correo_electronico" name="correo_electronico" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contrasena">Contraseña:</label>
+                        <input type="password" id="contrasena" name="contrasena" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmar_contrasena">Confirmar Contraseña:</label>
+                        <input type="password" id="confirmar_contrasena" name="confirmar_contrasena" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Tipo de Cuenta:</label><br>
+                        <input type="radio" id="tipo_cliente" name="tipo_cuenta" value="cliente" checked>
+                        <label for="tipo_cliente">Busco Servicios (Cliente)</label><br>
+                        <input type="radio" id="tipo_profesional" name="tipo_cuenta" value="profesional">
+                        <label for="tipo_profesional">Ofrezco Servicios (Profesional Individual)</label><br>
+                        <input type="radio" id="tipo_empresa" name="tipo_cuenta" value="empresa">
+                        <label for="tipo_empresa">Soy una Empresa</label>
+                    </div>
+
+                    <!-- Campos específicos para empresas -->
+                    <div id="campos-empresa" class="form-group" style="display: none;">
+                        <label for="nombre_empresa">Nombre de la Empresa:</label>
+                        <input type="text" id="nombre_empresa" name="nombre_empresa">
+                        
+                        <label for="telefono_empresa">Teléfono de la Empresa:</label>
+                        <input type="tel" id="telefono_empresa" name="telefono_empresa">
+                        
+                        <label for="direccion_empresa">Dirección de la Empresa:</label>
+                        <input type="text" id="direccion_empresa" name="direccion_empresa">
+                        
+                        <label for="sitio_web">Sitio Web (opcional):</label>
+                        <input type="url" id="sitio_web" name="sitio_web">
+                        
+                        <label for="horarios">Horarios de Atención (opcional):</label>
+                        <input type="text" id="horarios" name="horarios" placeholder="Ej: Lunes a Viernes 8:00 - 18:00">
+                    </div>
+
+                    <button type="submit" class="btn-primary" name="registro">Registrarse</button>
+                </form>
+                <p>¿Ya tienes cuenta? <a href="/Paginas/html/login.html">Inicia Sesión aquí</a>.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Conecta Cusco. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Función para mostrar mensajes
+        function mostrarMensaje(mensaje, tipo) {
+            const container = document.getElementById('message-container');
+            const texto = document.getElementById('message-text');
+            
+            container.className = `message-container ${tipo}`;
+            texto.textContent = mensaje;
+            container.style.display = 'block';
+            
+            // Ocultar mensaje después de 5 segundos
+            setTimeout(() => {
+                container.style.display = 'none';
+            }, 5000);
+        }
+
+        // Función para validar el formulario
+        function validarFormulario() {
+            const nombre = document.getElementById('nombre_completo').value.trim();
+            const email = document.getElementById('correo_electronico').value.trim();
+            const contrasena = document.getElementById('contrasena').value;
+            const confirmarContrasena = document.getElementById('confirmar_contrasena').value;
+            const tipoCuenta = document.querySelector('input[name="tipo_cuenta"]:checked').value;
+
+            // Validar nombre
+            if (nombre.length < 3) {
+                mostrarMensaje('El nombre debe tener al menos 3 caracteres.', 'error');
+                return false;
+            }
+
+            // Validar email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                mostrarMensaje('Por favor, ingresa un email válido.', 'error');
+                return false;
+            }
+
+            // Validar contraseña
+            if (contrasena.length < 6) {
+                mostrarMensaje('La contraseña debe tener al menos 6 caracteres.', 'error');
+                return false;
+            }
+
+            // Validar confirmación de contraseña
+            if (contrasena !== confirmarContrasena) {
+                mostrarMensaje('Las contraseñas no coinciden.', 'error');
+                return false;
+            }
+
+            // Validar tipo de cuenta
+            if (!tipoCuenta) {
+                mostrarMensaje('Por favor, selecciona un tipo de cuenta.', 'error');
+                return false;
+            }
+
+            return true;
+        }
+
+        // Verificar si hay mensajes en la URL (después del procesamiento PHP)
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const mensaje = urlParams.get('mensaje');
+            const tipo = urlParams.get('tipo');
+            
+            if (mensaje) {
+                mostrarMensaje(decodeURIComponent(mensaje), tipo || 'error');
+            }
+            
+            // Mostrar/ocultar campos de empresa según el tipo de cuenta seleccionado
+            const tipoCuentaRadios = document.querySelectorAll('input[name="tipo_cuenta"]');
+            const camposEmpresa = document.getElementById('campos-empresa');
+            
+            tipoCuentaRadios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (this.value === 'empresa') {
+                        camposEmpresa.style.display = 'block';
+                    } else {
+                        camposEmpresa.style.display = 'none';
+                    }
+                });
+            });
+        };
+    </script>
+</body>
+</html> 

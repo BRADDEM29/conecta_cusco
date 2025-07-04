@@ -1,0 +1,346 @@
+/* Estilos base y variables - Manteniendo la paleta original */
+:root {
+    --primary-color: #FF6B00;
+    --secondary-color: #003366;
+    --accent-color: #FFD700;
+    --light-color: #F8F9FA;
+    --dark-color: #343A40;
+    --text-color: #333;
+    --text-light: #6C757D;
+    --success-color: #28A745;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: #f5f5f5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Estilos del encabezado - Coherente con el diseño original */
+header {
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    color: white;
+    padding: 1.5rem 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../Imagenes/pattern.png') repeat;
+    opacity: 0.05;
+    pointer-events: none;
+}
+
+.logo {
+    margin-bottom: 1rem;
+}
+
+.logo img {
+    height: 70px;
+    width: auto;
+    border-radius: 50%;
+    border: 3px solid var(--accent-color);
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+}
+
+.logo img:hover {
+    transform: rotate(10deg);
+}
+
+header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Barra de navegación - Estilo consistente */
+nav {
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+nav li {
+    padding: 1rem 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+nav a:hover {
+    color: var(--primary-color);
+    background-color: rgba(255, 107, 0, 0.1);
+}
+
+.auth-links a:first-child {
+    margin-right: 0.5rem;
+}
+
+.auth-links a {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: var(--border-radius);
+}
+
+.auth-links a:hover {
+    background-color: #e05d00;
+    color: white;
+}
+
+/* Estilos para el formulario de registro - Mejorado y adaptado */
+.auth-form {
+    padding: 3rem 0;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+.auth-form .container {
+    max-width: 600px;
+    background-color: white;
+    padding: 2.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.auth-form h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--secondary-color);
+    font-size: 1.8rem;
+    position: relative;
+}
+
+.auth-form h2::after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 3px;
+    background-color: var(--primary-color);
+    margin: 0.8rem auto 1.5rem;
+    border-radius: 2px;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--secondary-color);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 0.8rem 1.2rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.form-group input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.2);
+}
+
+/* Estilos específicos para los radio buttons */
+.account-type-options {
+    margin-top: 0.5rem;
+}
+
+.account-type-options label {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 1.5rem;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.account-type-options input[type="radio"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--text-light);
+    border-radius: 50%;
+    margin-right: 0.5rem;
+    position: relative;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.account-type-options input[type="radio"]:checked {
+    border-color: var(--primary-color);
+}
+
+.account-type-options input[type="radio"]:checked::before {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 1rem;
+}
+
+.btn-primary:hover {
+    background-color: #e05d00;
+    transform: translateY(-2px);
+}
+
+.auth-form p {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: var(--text-light);
+}
+
+.auth-form a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.auth-form a:hover {
+    text-decoration: underline;
+}
+
+/* Footer - Manteniendo estilo consistente */
+footer {
+    background-color: var(--secondary-color);
+    color: white;
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: auto;
+}
+
+footer p {
+    opacity: 0.8;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    nav li {
+        padding: 0.5rem 0;
+    }
+    
+    .auth-links {
+        margin-top: 1rem;
+    }
+    
+    header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .auth-form {
+        padding: 2rem 0;
+    }
+    
+    .auth-form .container {
+        padding: 1.5rem;
+    }
+    
+    .account-type-options {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .account-type-options label {
+        margin-bottom: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo img {
+        height: 60px;
+    }
+    
+    header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .auth-form h2 {
+        font-size: 1.5rem;
+    }
+    
+    .form-group input, .btn-primary {
+        padding: 0.7rem 1rem;
+    }
+    
+    .auth-form .container {
+        padding: 1.5rem 1rem;
+    }
+}

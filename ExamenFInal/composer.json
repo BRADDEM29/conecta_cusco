@@ -1,0 +1,22 @@
+{
+    "name": "conecta-cusco/plataforma-servicios",
+    "description": "Plataforma web para conectar profesionales de servicios con clientes en Cusco, Perú",
+    "type": "project",
+    "require": {
+        "php": ">=8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "ConectaCusco\\": "src/"
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "echo 'Aplicación Conecta Cusco instalada correctamente'"
+        ]
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    }
+} 

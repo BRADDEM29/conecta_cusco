@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Perfil Profesional - Conecta Cusco</title>
+	<meta name="description" content="Conoce más sobre este profesional y sus servicios en Conecta Cusco.">
+	<link rel="stylesheet" href="/Estilos/perfil-profesional.css">
+	<link rel="icon" href="/Imagenes/favicon.ico" type="image/x-icon">
+	<style>
+		/* Estilos para el modal */
+		.modal {
+			display: none;
+			position: fixed;
+			z-index: 1000;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0,0,0,0.5);
+		}
+
+		.modal-content {
+			background-color: white;
+			margin: 5% auto;
+			padding: 2rem;
+			border-radius: 8px;
+			width: 90%;
+			max-width: 600px;
+			max-height: 80vh;
+			overflow-y: auto;
+		}
+
+		.close {
+			color: #aaa;
+			float: right;
+			font-size: 28px;
+			font-weight: bold;
+			cursor: pointer;
+		}
+
+		.close:hover {
+			color: #000;
+		}
+
+		.form-group {
+			margin-bottom: 1rem;
+		}
+
+		.form-group label {
+			display: block;
+			margin-bottom: 0.5rem;
+			font-weight: bold;
+			color: #333;
+		}
+
+		.form-group input,
+		.form-group textarea,
+		.form-group select {
+			width: 100%;
+			padding: 0.8rem;
+			border: 1px solid #ddd;
+			border-radius: 4px;
+			font-size: 1rem;
+		}
+
+		.form-group textarea {
+			resize: vertical;
+			min-height: 100px;
+		}
+
+		.btn-edit {
+			background-color: #28A745;
+			color: white;
+			padding: 0.8rem 2rem;
+			border: none;
+			border-radius: 8px;
+			font-weight: bold;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			text-decoration: none;
+			display: inline-block;
+		}
+
+		.btn-edit:hover {
+			background-color: #218838;
+			transform: translateY(-2px);
+		}
+
+		.services-list {
+			max-height: 200px;
+			overflow-y: auto;
+			border: 1px solid #ddd;
+			border-radius: 4px;
+			padding: 0.5rem;
+		}
+
+		.service-checkbox {
+			display: flex;
+			align-items: center;
+			margin-bottom: 0.5rem;
+		}
+
+		.service-checkbox input[type="checkbox"] {
+			width: auto;
+			margin-right: 0.5rem;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<div class="container">
+			<div class="logo">
+				<img src="/Imagenes/logo.png" alt="Conecta Cusco Logo">
+			</div>
+			<h1>Conecta Cusco</h1>
+		</div>
+	</header>
+
+	<nav>
+		<div class="container">
+			<ul>
+				<li><a href="/index.html">Inicio</a></li>
+				<li><a href="/Paginas/html/buscar.html">Buscar Servicios</a></li>
+				<li><a href="/Paginas/php/publicar-servicios.php">Publicar mi Servicio</a></li>
+				<li class="auth-links">
+					<a href="/Paginas/html/login.html">Iniciar Sesión</a>
+					<a href="/Paginas/php/registro.php">Registrarse</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+	<main>
+		<section class="profile-section">
+			<div class="container">
+				<div class="profile-header">
+					<div class="profile-photo">
+						<img id="profile-image" src="/Imagenes/perfil.webp" alt="Foto de perfil del profesional">
+					</div>
+					<div class="profile-info">
+						<h2 id="profile-name">Juan Pérez</h2>
+						<p class="profession" id="profile-profession">Gasfitero Profesional</p>
+						<p class="location">📍 Cusco, Perú</p>
+						<div class="rating">
+							<span class="stars">★★★★★</span>
+							<span class="rating-text">5.0 (15 reseñas)</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="profile-details">
+					<div class="contact-info">
+						<h3>Información de Contacto</h3>
+						<p><strong>Teléfono:</strong> <span id="profile-phone">+51 999 123 456</span></p>
+						<p><strong>Email:</strong> <span id="profile-email">juan.perez@email.com</span></p>
+						<p><strong>Horarios:</strong> <span id="profile-schedule">Lunes a Sábado, 8:00 AM - 6:00 PM</span></p>
+					</div>
+
+					<div class="services-offered">
+						<h3>Servicios Ofrecidos</h3>
+						<ul id="profile-services">
+							<li>Reparación de fugas de agua</li>
+							<li>Instalación de tuberías</li>
+							<li>Desatascos</li>
+							<li>Mantenimiento de sistemas de agua</li>
+							<li>Instalación de grifos y sanitarios</li>
+						</ul>
+					</div>
+
+					<div class="areas-covered">
+						<h3>Áreas de Cobertura</h3>
+						<p id="profile-areas">Cercado de Cusco, San Blas, Wanchaq, Santiago, San Sebastián</p>
+					</div>
+
+					<div class="experience">
+						<h3>Experiencia</h3>
+						<p id="profile-experience">Más de 8 años de experiencia en servicios de gasfitería residencial y comercial. Certificado en instalaciones sanitarias y sistemas de agua potable.</p>
+					</div>
+				</div>
+
+				<div class="action-buttons">
+					<button class="btn-edit" onclick="openEditModal()">Editar Perfil</button>
+					<a href="tel:+51999123456" class="btn-primary">Llamar Ahora</a>
+					<a href="mailto:juan.perez@email.com" class="btn-secondary">Enviar Mensaje</a>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<!-- Modal para editar perfil -->
+	<div id="editModal" class="modal">
+		<div class="modal-content">
+			<span class="close" onclick="closeEditModal()">&times;</span>
+			<h2>Editar Perfil</h2>
+			
+			<form id="editProfileForm" onsubmit="saveProfile(event)">
+				<div class="form-group">
+					<label for="edit-name">Nombre Completo:</label>
+					<input type="text" id="edit-name" name="name" required>
+				</div>
+
+				<div class="form-group">
+					<label for="edit-profession">Profesión:</label>
+					<input type="text" id="edit-profession" name="profession" required>
+				</div>
+
+				<div class="form-group">
+					<label for="edit-phone">Teléfono:</label>
+					<input type="tel" id="edit-phone" name="phone" required>
+				</div>
+
+				<div class="form-group">
+					<label for="edit-email">Email:</label>
+					<input type="email" id="edit-email" name="email" required>
+				</div>
+
+				<div class="form-group">
+					<label for="edit-schedule">Horarios de Atención:</label>
+					<input type="text" id="edit-schedule" name="schedule" placeholder="Ej: Lunes a Sábado, 8:00 AM - 6:00 PM">
+				</div>
+
+				<div class="form-group">
+					<label for="edit-photo">Foto de Perfil:</label>
+					<input type="file" id="edit-photo" name="photo" accept="image/*">
+				</div>
+
+				<div class="form-group">
+					<label>Servicios que Ofreces:</label>
+					<div class="services-list">
+						<div class="service-checkbox">
+							<input type="checkbox" id="service1" name="services[]" value="Reparación de fugas de agua">
+							<label for="service1">Reparación de fugas de agua</label>
+						</div>
+						<div class="service-checkbox">
+							<input type="checkbox" id="service2" name="services[]" value="Instalación de tuberías">
+							<label for="service2">Instalación de tuberías</label>
+						</div>
+						<div class="service-checkbox">
+							<input type="checkbox" id="service3" name="services[]" value="Desatascos">
+							<label for="service3">Desatascos</label>
+						</div>
+						<div class="service-checkbox">
+							<input type="checkbox" id="service4" name="services[]" value="Mantenimiento de sistemas de agua">
+							<label for="service4">Mantenimiento de sistemas de agua</label>
+						</div>
+						<div class="service-checkbox">
+							<input type="checkbox" id="service5" name="services[]" value="Instalación de grifos y sanitarios">
+							<label for="service5">Instalación de grifos y sanitarios</label>
+						</div>
+						<div class="service-checkbox">
+							<input type="checkbox" id="service6" name="services[]" value="Electricidad">
+							<label for="service6">Electricidad</label>
+						</div>
+						<div class="service-checkbox">
+							<input type="checkbox" id="service7" name="services[]" value="Albañilería">
+							<label for="service7">Albañilería</label>
+						</div>
+						<div class="service-checkbox">
+							<input type="checkbox" id="service8" name="services[]" value="Pintura">
+							<label for="service8">Pintura</label>
+						</div>
+						<div class="service-checkbox">
+							<input type="checkbox" id="service9" name="services[]" value="Jardinería">
+							<label for="service9">Jardinería</label>
+						</div>
+						<div class="service-checkbox">
+							<input type="checkbox" id="service10" name="services[]" value="Limpieza del hogar">
+							<label for="service10">Limpieza del hogar</label>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="edit-areas">Áreas de Cobertura:</label>
+					<textarea id="edit-areas" name="areas" placeholder="Ej: Cercado de Cusco, San Blas, Wanchaq, Santiago, San Sebastián"></textarea>
+				</div>
+
+				<div class="form-group">
+					<label for="edit-experience">Experiencia y Reseña:</label>
+					<textarea id="edit-experience" name="experience" placeholder="Describe tu experiencia, certificaciones, años de trabajo, etc."></textarea>
+				</div>
+
+				<div class="action-buttons">
+					<button type="submit" class="btn-primary">Guardar Cambios</button>
+					<button type="button" class="btn-secondary" onclick="closeEditModal()">Cancelar</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<footer>
+		<div class="container">
+			<p>&copy; 2025 Conecta Cusco. Todos los derechos reservados.</p>
+		</div>
+	</footer>
+
+	<script>
+		// Funciones para el modal
+		function openEditModal() {
+			document.getElementById('editModal').style.display = 'block';
+			loadCurrentData();
+		}
+
+		function closeEditModal() {
+			document.getElementById('editModal').style.display = 'none';
+		}
+
+		// Cargar datos actuales en el formulario
+		function loadCurrentData() {
+			document.getElementById('edit-name').value = document.getElementById('profile-name').textContent;
+			document.getElementById('edit-profession').value = document.getElementById('profile-profession').textContent;
+			document.getElementById('edit-phone').value = document.getElementById('profile-phone').textContent;
+			document.getElementById('edit-email').value = document.getElementById('profile-email').textContent;
+			document.getElementById('edit-schedule').value = document.getElementById('profile-schedule').textContent;
+			document.getElementById('edit-areas').value = document.getElementById('profile-areas').textContent;
+			document.getElementById('edit-experience').value = document.getElementById('profile-experience').textContent;
+		}
+
+		// Guardar cambios del perfil
+		function saveProfile(event) {
+			event.preventDefault();
+			
+			// Obtener datos del formulario
+			const name = document.getElementById('edit-name').value;
+			const profession = document.getElementById('edit-profession').value;
+			const phone = document.getElementById('edit-phone').value;
+			const email = document.getElementById('edit-email').value;
+			const schedule = document.getElementById('edit-schedule').value;
+			const areas = document.getElementById('edit-areas').value;
+			const experience = document.getElementById('edit-experience').value;
+			
+			// Obtener servicios seleccionados
+			const selectedServices = [];
+			const serviceCheckboxes = document.querySelectorAll('input[name="services[]"]:checked');
+			serviceCheckboxes.forEach(checkbox => {
+				selectedServices.push(checkbox.value);
+			});
+
+			// Actualizar la página con los nuevos datos
+			document.getElementById('profile-name').textContent = name;
+			document.getElementById('profile-profession').textContent = profession;
+			document.getElementById('profile-phone').textContent = phone;
+			document.getElementById('profile-email').textContent = email;
+			document.getElementById('profile-schedule').textContent = schedule;
+			document.getElementById('profile-areas').textContent = areas;
+			document.getElementById('profile-experience').textContent = experience;
+
+			// Actualizar lista de servicios
+			const servicesList = document.getElementById('profile-services');
+			servicesList.innerHTML = '';
+			selectedServices.forEach(service => {
+				const li = document.createElement('li');
+				li.textContent = service;
+				servicesList.appendChild(li);
+			});
+
+			// Manejar foto de perfil
+			const photoFile = document.getElementById('edit-photo').files[0];
+			if (photoFile) {
+				const reader = new FileReader();
+				reader.onload = function(e) {
+					document.getElementById('profile-image').src = e.target.result;
+				};
+				reader.readAsDataURL(photoFile);
+			}
+
+			// Cerrar modal
+			closeEditModal();
+			
+			// Mostrar mensaje de éxito
+			alert('Perfil actualizado exitosamente');
+		}
+
+		// Cerrar modal al hacer clic fuera de él
+		window.onclick = function(event) {
+			const modal = document.getElementById('editModal');
+			if (event.target == modal) {
+				closeEditModal();
+			}
+		}
+	</script>
+</body>
+</html>

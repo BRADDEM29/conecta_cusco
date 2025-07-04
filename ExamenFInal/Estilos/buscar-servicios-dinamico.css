@@ -1,0 +1,328 @@
+/* Estilos específicos para buscar-servicios.php */
+.service-listings {
+    padding: 40px 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    min-height: 60vh;
+}
+
+.service-listings .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.service-listings h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 40px;
+    font-size: 2.5em;
+    font-weight: 700;
+    position: relative;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.service-listings h2::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+/* Grid de servicios */
+.listings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+/* Tarjeta de servicio mejorada */
+.service-card {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    margin-bottom: 0;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(102, 126, 234, 0.1);
+    position: relative;
+    overflow: hidden;
+    height: fit-content;
+    min-height: 380px;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(10px);
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+}
+
+/* Bordes superiores por categoría */
+.card-plomeria::before {
+    background: linear-gradient(90deg, #2563eb, #3b82f6);
+    box-shadow: 0 2px 10px rgba(37, 99, 235, 0.3);
+}
+
+.card-gasfiteria::before {
+    background: linear-gradient(90deg, #0891b2, #0ea5e9);
+    box-shadow: 0 2px 10px rgba(8, 145, 178, 0.3);
+}
+
+.card-ninyera::before {
+    background: linear-gradient(90deg, #ec4899, #f43f5e);
+    box-shadow: 0 2px 10px rgba(236, 72, 153, 0.3);
+}
+
+.card-limpieza::before {
+    background: linear-gradient(90deg, #059669, #10b981);
+    box-shadow: 0 2px 10px rgba(5, 150, 105, 0.3);
+}
+
+.card-jardineria::before {
+    background: linear-gradient(90deg, #16a34a, #22c55e);
+    box-shadow: 0 2px 10px rgba(22, 163, 74, 0.3);
+}
+
+.card-electricidad::before {
+    background: linear-gradient(90deg, #f59e0b, #fbbf24);
+    box-shadow: 0 2px 10px rgba(245, 158, 11, 0.3);
+}
+
+.card-albanileria::before {
+    background: linear-gradient(90deg, #7c3aed, #8b5cf6);
+    box-shadow: 0 2px 10px rgba(124, 58, 237, 0.3);
+}
+
+.card-carpinteria::before {
+    background: linear-gradient(90deg, #92400e, #b45309);
+    box-shadow: 0 2px 10px rgba(146, 64, 14, 0.3);
+}
+
+.card-pintura::before {
+    background: linear-gradient(90deg, #dc2626, #ef4444);
+    box-shadow: 0 2px 10px rgba(220, 38, 38, 0.3);
+}
+
+.card-otros::before {
+    background: linear-gradient(90deg, #6b7280, #9ca3af);
+    box-shadow: 0 2px 10px rgba(107, 114, 128, 0.3);
+}
+
+.service-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.15);
+    border-color: rgba(102, 126, 234, 0.3);
+}
+
+/* Efectos hover por categoría */
+.card-plomeria:hover {
+    box-shadow: 0 15px 40px rgba(37, 99, 235, 0.2);
+    border-color: rgba(37, 99, 235, 0.4);
+}
+
+.card-gasfiteria:hover {
+    box-shadow: 0 15px 40px rgba(8, 145, 178, 0.2);
+    border-color: rgba(8, 145, 178, 0.4);
+}
+
+.card-ninyera:hover {
+    box-shadow: 0 15px 40px rgba(236, 72, 153, 0.2);
+    border-color: rgba(236, 72, 153, 0.4);
+}
+
+.card-limpieza:hover {
+    box-shadow: 0 15px 40px rgba(5, 150, 105, 0.2);
+    border-color: rgba(5, 150, 105, 0.4);
+}
+
+.card-jardineria:hover {
+    box-shadow: 0 15px 40px rgba(22, 163, 74, 0.2);
+    border-color: rgba(22, 163, 74, 0.4);
+}
+
+.card-electricidad:hover {
+    box-shadow: 0 15px 40px rgba(245, 158, 11, 0.2);
+    border-color: rgba(245, 158, 11, 0.4);
+}
+
+.card-albanileria:hover {
+    box-shadow: 0 15px 40px rgba(124, 58, 237, 0.2);
+    border-color: rgba(124, 58, 237, 0.4);
+}
+
+.card-carpinteria:hover {
+    box-shadow: 0 15px 40px rgba(146, 64, 14, 0.2);
+    border-color: rgba(146, 64, 14, 0.4);
+}
+
+.card-pintura:hover {
+    box-shadow: 0 15px 40px rgba(220, 38, 38, 0.2);
+    border-color: rgba(220, 38, 38, 0.4);
+}
+
+.card-otros:hover {
+    box-shadow: 0 15px 40px rgba(107, 114, 128, 0.2);
+    border-color: rgba(107, 114, 128, 0.4);
+}
+
+/* Encabezado de la tarjeta */
+.service-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.service-photo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+    border: 3px solid #667eea;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+}
+
+.service-info h3 {
+    margin: 0 0 5px 0;
+    color: #2c3e50;
+    font-size: 1.3em;
+    font-weight: 700;
+}
+
+.service-category {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.8em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Contenido de la tarjeta */
+.service-content {
+    flex: 1;
+    margin-bottom: 20px;
+}
+
+.service-description {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    font-size: 0.95em;
+}
+
+.service-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+}
+
+.service-price {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9em;
+}
+
+.service-rating {
+    color: #f39c12;
+    font-weight: 600;
+}
+
+/* Pie de la tarjeta */
+.service-footer {
+    margin-top: auto;
+    display: flex;
+    gap: 10px;
+}
+
+.btn-view {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+    flex: 1;
+    text-align: center;
+}
+
+.btn-view:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+    color: white;
+    text-decoration: none;
+}
+
+.btn-contact {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+    flex: 1;
+    text-align: center;
+}
+
+.btn-contact:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(40, 167, 69, 0.3);
+    color: white;
+    text-decoration: none;
+}
+
+/* Estados de disponibilidad */
+.available {
+    color: #28a745;
+    font-weight: 600;
+}
+
+.not-available {
+    color: #dc3545;
+    font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .listings-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .service-card {
+        max-width: none;
+    }
+    
+    .service-footer {
+        flex-direction: column;
+    }
+} 

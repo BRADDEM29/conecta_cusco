@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Conecta Cusco - Tu Plataforma de Servicios Locales</title>
+	<meta name="description" content="Encuentra y publica servicios locales en Cusco: trabajadores del hogar, gasfiteros, niñeros, etc.">
+	<link rel="stylesheet" href="Estilos/index.css">
+	<link rel="icon" href="Imagenes/favicon.ico" type="image/x-icon">
+</head>
+<body>
+	<header>
+		<div class="container">
+			<div class="logo">
+				<img src="Imagenes/logo.png" alt="Conecta Cusco Logo">
+			</div>
+			<h1>Conecta Cusco</h1>
+			<p>Publica tus habilidades y consigue clientes más rápido. Encuentra acá las diferentes categorías de empleo o servicios que te ofrecen.</p>
+		</div>
+	</header>
+
+	<nav>
+		<div class="container">
+			<ul>
+				<li><a href="/index.html">Inicio</a></li>
+				<li><a href="/Paginas/php/buscar-servicios.php">Buscar Servicios</a></li>
+				<li><a href="/Paginas/php/publicar-servicios.php">Publicar mi Servicio</a></li>
+				<li><a href="/Paginas/html/login.html">Iniciar Sesión</a></li>
+				<li><a href="/Paginas/html/registro.html" class="btn-registro">Registrarse</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<main>
+		<section class="hero">
+			<div class="container">
+				<h2>Encuentra el Profesional Ideal Cerca de Ti</h2>
+				<form action="/Paginas/php/buscar-servicios.php" method="get">
+					<input type="text" name="q" placeholder="Busca por servicio o habilidad (ej: gasfitero, niñera)">
+					<input type="text" name="location" placeholder="Tu distrito o zona">
+					<button type="submit">Buscar</button>
+				</form>
+			</div>
+		</section>
+
+		<section class="featured-content">
+			<div class="container">
+				<h2>Servicios Destacados</h2>
+				<div class="services-grid">
+					<div class="service-card">
+						<img src="Imagenes/plomero.jpg" alt="Plomería">
+						<h3>Plomería</h3>
+						<p>Servicios de plomería profesional para tu hogar o negocio.</p>
+						<a href="/Paginas/html/buscar.html?categoria=plomeria" class="btn">Ver Servicios</a>
+					</div>
+					<div class="service-card">
+						<img src="Imagenes/gasfiteria.jpg" alt="Gasfitería">
+						<h3>Gasfitería</h3>
+						<p>Instalación y reparación de sistemas de gas y agua.</p>
+						<a href="/Paginas/html/buscar.html?categoria=gasfiteria" class="btn">Ver Servicios</a>
+					</div>
+					<div class="service-card">
+						<img src="Imagenes/niñera.jpg" alt="Cuidado de Niños">
+						<h3>Cuidado de Niños</h3>
+						<p>Servicios de niñera y cuidado infantil profesional.</p>
+						<a href="/Paginas/html/buscar.html?categoria=cuidado-ninos" class="btn">Ver Servicios</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Sección explicativa -->
+		<section class="about-section">
+			<div class="container">
+				<h2>¿Qué es Conecta Cusco?</h2>
+				<div class="about-content">
+					<div class="about-text">
+						<p>Conecta Cusco es tu plataforma local para encontrar y ofrecer servicios profesionales. Conectamos a profesionales calificados con clientes que necesitan sus servicios, facilitando el encuentro y la contratación de manera segura y confiable.</p>
+						<div class="features">
+							<div class="feature">
+								<span class="icon">🔍</span>
+								<h3>Encuentra Fácilmente</h3>
+								<p>Busca profesionales por categoría, ubicación y calificación</p>
+							</div>
+							<div class="feature">
+								<span class="icon">⭐</span>
+								<h3>Profesionales Verificados</h3>
+								<p>Todos nuestros profesionales pasan por un proceso de verificación</p>
+							</div>
+							<div class="feature">
+								<span class="icon">💬</span>
+								<h3>Contacto Directo</h3>
+								<p>Comunícate directamente con los profesionales sin intermediarios</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Sección de estadísticas -->
+		<section class="stats-section">
+			<div class="container">
+				<div class="stats-grid">
+					<div class="stat-item">
+						<span class="stat-number">150+</span>
+						<span class="stat-label">Profesionales Registrados</span>
+					</div>
+					<div class="stat-item">
+						<span class="stat-number">500+</span>
+						<span class="stat-label">Servicios Publicados</span>
+					</div>
+					<div class="stat-item">
+						<span class="stat-number">1000+</span>
+						<span class="stat-label">Clientes Satisfechos</span>
+					</div>
+					<div class="stat-item">
+						<span class="stat-number">4.8</span>
+						<span class="stat-label">Calificación Promedio</span>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<footer>
+		<div class="container">
+			<p>&copy; 2025 Conecta Cusco. Todos los derechos reservados.</p>
+		</div>
+	</footer>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Buscar Servicios - Conecta Cusco</title>
+	<meta name="description" content="Explora la lista de profesionales y servicios disponibles en Cusco.">
+	<link rel="stylesheet" href="/Estilos/buscar-servicios.css">
+	<link rel="icon" href="/Imagenes/favicon.ico" type="image/x-icon">
+</head>
+<body>
+	<header>
+		<div class="container">
+			<div class="logo">
+				<img src="/Imagenes/logo.png" alt="Conecta Cusco Logo">
+			</div>
+			<h1>Conecta Cusco</h1>
+		</div>
+	</header>
+	<nav>
+		<div class="container">
+			<ul>
+				<li><a href="/index.html">Inicio</a></li>
+				<li><a href="/Paginas/html/buscar-servicios.php">Buscar Servicios</a></li>
+				<li><a href="/Paginas/php/publicar-servicios.php">Publicar mi Servicio</a></li>
+				<li><a href="/Paginas/html/login.html">Iniciar Sesión</a></li>
+				<li><a href="/Paginas/html/registro.html" class="btn-registro">Registrarse</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<main>
+		<section class="hero">
+			<div class="container">
+				<h2>Encuentra el Profesional Ideal Cerca de Ti</h2>
+				<form action="/Paginas/html/buscar-servicios.php" method="get">
+					<div class="form-group">
+						<input type="text" name="q" placeholder="Busca por servicio o habilidad (ej: gasfitero, niñera)">
+					</div>
+					<div class="form-group">
+						<input type="text" name="location" placeholder="Tu distrito o zona">
+					</div>
+					<button type="submit">Buscar</button>
+				</form>
+			</div>
+		</section>
+		
+		<!-- Filtros de búsqueda -->
+		<section class="search-filters-section">
+			<div class="container">
+				<div class="search-filters">
+					<div class="filter-group">
+						<label for="categoria">Categoría:</label>
+						<select id="categoria" name="categoria">
+							<option value="">Todas las categorías</option>
+							<option value="plomeria">Plomería</option>
+							<option value="gasfiteria">Gasfitería</option>
+							<option value="ninyera">Niñera/Cuidado de niños</option>
+							<option value="limpieza">Limpieza del hogar</option>
+							<option value="jardineria">Jardinería</option>
+							<option value="electricidad">Electricidad</option>
+							<option value="albanileria">Albañilería</option>
+							<option value="carpinteria">Carpintería</option>
+							<option value="pintura">Pintura</option>
+							<option value="otros">Otros servicios</option>
+						</select>
+					</div>
+					
+					<div class="filter-group">
+						<label for="calificacion">Calificación mínima:</label>
+						<select id="calificacion" name="calificacion">
+							<option value="">Cualquier calificación</option>
+							<option value="4">4+ estrellas</option>
+							<option value="3">3+ estrellas</option>
+							<option value="2">2+ estrellas</option>
+						</select>
+					</div>
+					
+					<div class="filter-group">
+						<label for="disponibilidad">Disponibilidad:</label>
+						<select id="disponibilidad" name="disponibilidad">
+							<option value="">Cualquier disponibilidad</option>
+							<option value="disponible">Disponible</option>
+							<option value="no_disponible">No disponible</option>
+						</select>
+					</div>
+					
+					<button type="button" class="btn-filtrar">Aplicar Filtros</button>
+				</div>
+			</div>
+		</section>
+		
+		<section class="service-listings">
+			<div class="container">
+				<h2>Profesionales Disponibles</h2>
+				<div class="listings-grid">
+					<!-- Los servicios reales se cargarán dinámicamente por JavaScript -->
+				</div>
+
+				<div class="pagination" style="display:none;"></div>
+			</div>
+		</section>
+	</main>
+
+	<footer>
+		<div class="container">
+			<p>&copy; 2025 Conecta Cusco. Todos los derechos reservados.</p>
+		</div>
+	</footer>
+
+	<script src="/js/script.js"></script>
+</body>
+</html>

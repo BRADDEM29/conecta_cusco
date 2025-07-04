@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard Profesional - Conecta Cusco</title>
+    <link rel="stylesheet" href="/Estilos/index.css">
+    <link rel="stylesheet" href="/Estilos/dashboard-profesional.css">
+    <link rel="stylesheet" href="/Estilos/menu-usuario.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="/Imagenes/logo.png" alt="Conecta Cusco Logo">
+            </div>
+            <h1>Conecta Cusco</h1>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <div class="nav-menu">
+                <div class="nav-left">
+                    <ul>
+                        <li><a href="/index.html">Inicio</a></li>
+                        <li><a href="/Paginas/php/publicar-servicios.php">Publicar Servicio</a></li>
+                        <li><a href="/Paginas/html/perfil.html">Mi Perfil</a></li>
+                    </ul>
+                </div>
+                <div class="nav-right">
+                    <div class="user-menu">
+                        <img src="<?php echo !empty($user_info['foto_perfil']) ? '/uploads/' . htmlspecialchars($user_info['foto_perfil']) : '/Imagenes/perfil.webp'; ?>" 
+                             alt="Avatar" class="user-avatar" onclick="toggleDropdown()">
+                        <div id="userDropdown" class="dropdown-content">
+                            <a href="/Paginas/html/perfil.html">Mi Perfil</a>
+                            <a href="/Paginas/php/logout.php">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <?php if (!empty($mensaje_exito)): ?>
+    <div class="success-banner" style="background: linear-gradient(135deg, #28A745, #20C997); color: white; padding: 15px 20px; text-align: center; margin-bottom: 20px;">
+        <h3>✅ Éxito</h3>
+        <p><?php echo htmlspecialchars($mensaje_exito); ?></p>
+    </div>
+    <?php endif; ?>
+
+    <main class="dashboard-container">
+        <?php if (!$datos_basicos_completos): ?>
+        <div class="recommendation-banner">
+            <h3>💡 Recomendación</h3>
+            <p><?php echo htmlspecialchars($mensaje_recomendacion); ?></p>
+        </div>
+        <?php endif; ?>
+        
+        <section class="welcome-section">
+            <h2>¡Bienvenido, <?php echo htmlspecialchars($_SESSION['user_name']); ?>!</h2>
+            <p>Gestiona tus servicios y conecta con nuevos clientes</p>
+            <div class="nav-actions">
+                <a href="/Paginas/php/publicar-servicios.php" class="nav-btn">Publicar Nuevo Servicio</a>
+                <a href="/Paginas/html/perfil.html" class="nav-btn">Editar Perfil</a>
+            </div>
+        </section>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number"><?php echo $result ? $result->num_rows : 0; ?></div>
+                <div class="stat-label">Servicios Publicados</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">0</div>
+                <div class="stat-label">Contactos Recibidos</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">0</div>
+                <div class="stat-label">Reseñas</div>
+            </div>
+        </div>
+
+        <section class="services-section">
+            <h2>Mis Servicios</h2>
+            <?php if ($result && $result->num_rows > 0): ?>
+                <?php while ($row = $result->fetch_assoc()): ?>
+                    <div class="service-item">
+                        <div class="service-info">
+                            <h3><?php echo htmlspecialchars($row['titulo']); ?></h3>
+                            <p class="service-category"><?php echo htmlspecialchars($row['categoria']); ?></p>
+                            <p><?php echo htmlspecialchars(substr($row['descripcion'], 0, 100)) . '...'; ?></p>
+                        </div>
+                        <div class="service-actions">
+                            <a href="#" class="btn btn-secondary">Editar</a>
+                            <a href="#" class="btn btn-danger" onclick="return confirm('¿Estás seguro de eliminar este servicio?')">Eliminar</a>
+                        </div>
+                    </div>
+                <?php endwhile; ?>
+            <?php else: ?>
+                <div class="empty-state">
+                    <h3>No tienes servicios publicados</h3>
+                    <p>Comienza publicando tu primer servicio para conectar con clientes</p>
+                    <div class="quick-actions">
+                        <a href="/Paginas/php/publicar-servicios.php" class="btn btn-primary">Publicar Servicio</a>
+                        <a href="/Paginas/html/perfil.html" class="btn btn-secondary">Editar Perfil</a>
+                    </div>
+                </div>
+            <?php endif; ?>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Conecta Cusco. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleDropdown() {
+            document.getElementById("userDropdown").classList.toggle("show");
+        }
+
+        // Cerrar dropdown si se hace clic fuera
+        window.onclick = function(event) {
+            if (!event.target.matches('.user-avatar')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html> 

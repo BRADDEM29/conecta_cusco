@@ -1,0 +1,11 @@
+[phases.setup]
+nixPkgs = ["php", "php-pdo", "php-pdo-pgsql", "php-gd", "php-fileinfo"]
+
+[phases.install]
+cmds = ["echo 'Instalando dependencias PHP...'"]
+
+[phases.build]
+cmds = ["echo 'Construyendo aplicación PHP...'"]
+
+[start]
+cmd = "php -S 0.0.0.0:$PORT" 

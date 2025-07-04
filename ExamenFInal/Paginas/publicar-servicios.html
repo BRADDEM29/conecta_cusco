@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Publicar Servicio - Conecta Cusco</title>
+	<meta name="description" content="Publica los detalles de tu servicio en Conecta Cusco para que los clientes te encuentren.">
+	<link rel="stylesheet" href="/Estilos/publicar-servicios.css">
+	<link rel="icon" href="/Imagenes/favicon.ico" type="image/x-icon">
+</head>
+<body>
+	<header>
+		<div class="container">
+			<div class="logo">
+				<img src="/Imagenes/logo.png" alt="Conecta Cusco Logo">
+			</div>
+			<h1>Conecta Cusco</h1>
+		</div>
+	</header>
+
+	<nav>
+		<div class="container">
+			<ul>
+				<li><a href="/index.html">Inicio</a></li>
+				<li><a href="/Paginas/html/buscar-servicios.html">Buscar Servicios</a></li>
+				<li><a href="/Paginas/publicar-servicios.html">Publicar mi Servicio</a> </li>
+				<li class="auth-links">
+					<a href="/Paginas/html/login.html">Iniciar Sesión</a>
+					<a href="/Paginas/registro.php">Registrarse</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+	<main>
+		<section class="publish-form">
+			<div class="container">
+				<h2>Publicar un Nuevo Servicio</h2>
+				<form action="/Paginas/procesar-publicacion.php" method="post" enctype="multipart/form-data">
+					<div class="form-group">
+						<label for="service-title">Título del Servicio:</label>
+						<input type="text" id="service-title" name="service-title" required>
+					</div>
+					<div class="form-group">
+						<label for="category">Categoría:</label>
+						<select id="category" name="category" required>
+							<option value="">Selecciona una categoría</option>
+							<option value="mantenimiento">Mantenimiento y Reparaciones del Hogar</option>
+							<option value="gasfiteria">Gasfitería</option>
+							<option value="electricidad">Electricidad</option>
+							<option value="albanileria">Albañilería</option>
+							<option value="pintura">Pintura</option>
+							<option value="jardineria">Jardinería</option>
+							<option value="personales">Servicios Personales y Cuidado</option>
+							<option value="ninera">Niñera / Cuidado Infantil</option>
+							<option value="adultos-mayores">Cuidado de Adultos Mayores</option>
+							<option value="limpieza">Limpieza del Hogar</option>
+							<option value="cocina">Cocina / Chef a Domicilio</option>
+                            <option value="estilismo">Peluquería/Estilismo a Domicilio</option>
+                            <option value="masajes">Masajes a Domicilio</option>
+							<option value="independientes">Otros Servicios Independientes</option>
+							<option value="costura">Costura</option>
+							<option value="clases">Clases Particulares</option>
+							<option value="repartos">Repartos / Mandados</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="description">Descripción detallada de tu servicio:</label>
+						<textarea id="description" name="description" rows="6" required></textarea>
+					</div>
+					<div class="form-group">
+						<label for="service-area">Área(s) de Cobertura (Distritos/Zonas en Cusco):</label>
+						<input type="text" id="service-area" name="service-area" placeholder="Ej: Cercado, San Blas, Wanchaq, etc." required>
+					</div>
+                    <div class="form-group">
+						<label for="contact-phone">Teléfono de Contacto:</label>
+						<input type="tel" id="contact-phone" name="contact-phone">
+					</div>
+                    <div class="form-group">
+						<label for="contact-email">Email de Contacto (opcional):</label>
+						<input type="email" id="contact-email" name="contact-email">
+					</div>
+                    <div class="form-group">
+						<label for="profile-photo">Sube tu foto de perfil:</label>
+						<input type="file" id="profile-photo" name="profile-photo" accept="image/*">
+					</div>
+
+					<button type="submit" class="btn-primary">Publicar Servicio</button>
+				</form>
+			</div>
+		</section>
+	</main>
+
+	<footer>
+		<div class="container">
+			<p>&copy; 2025 Conecta Cusco. Todos los derechos reservados.</p>
+		</div>
+	</footer>
+
+	<script src="/js/script.js"></script>
+</body>
+</html>
